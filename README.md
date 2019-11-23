@@ -1,2 +1,2 @@
-# jiwoo.netlify.com
+# jiwookim.netlify.com
 Personal website
