@@ -1,4 +1,8 @@
 import ActionTypes from './ActionTypes'
 
-export default {
-}
+export const updateBox = (event) => ({
+    type: ActionTypes.UPDATE_DRAGGED,
+    payload: {
+        event
+    }
+})
