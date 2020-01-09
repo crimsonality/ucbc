@@ -13,7 +13,7 @@ class App extends Component {
         return (
             <div className="App">
               <header className="App-header">
-                React redux set up base
+                UCBC (Underground Church Badminton Club)
               </header>
             </div>
           )
