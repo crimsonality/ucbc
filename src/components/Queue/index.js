@@ -14,18 +14,19 @@ class Queue extends Component {
     }
 
     dropped(e) {
-        this.props.actions.updateBox(e)
+        this.props.actions.AddQueue(e)
     }
     
     render() {
         let html = []
-        console.log(this.props.Dragged)
-        if(this.props.Dragged && this.props.Dragged.length > 0) {
-            console.log(this.props.Dragged)
-            for(let i in this.props.Dragged) {
-                html.push(<div key={this.props.Dragged[i].dragElem.innerText}>{this.props.Dragged[i].dragElem.innerText}</div>)
+        const Queue = this.props.Queue
+
+        if(Queue && Queue.length > 0) {
+            for(let i in Queue) {
+                html.push(<div key={Queue[i].dragElem.innerText}>{Queue[i].dragElem.innerText}</div>)
             }
         }
+        
         return (
             <div className='queue-container'>
                 <DropTarget 
@@ -42,7 +43,7 @@ class Queue extends Component {
 export default connect(
     state => {
         return {
-            Dragged: state.Dragged
+            Queue: state.Queue
         }
     },
     dispatch => ({

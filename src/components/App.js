@@ -6,7 +6,8 @@ import '../assets/style/App.scss'
 
 import Court from './Court'
 import Queue from './Queue'
-import List from './List'
+import OffCourt from './OffCourt'
+import AddPlayerModal from './AddPlayerModal'
 
 class App extends Component {
     constructor(props) {
@@ -22,8 +23,9 @@ class App extends Component {
               <div className="app-container">
                 <Court />
                 <Queue />
-                <List />
+                <OffCourt />
               </div>
+              <AddPlayerModal />
             </div>
           )
     }
