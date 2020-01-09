@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import {bindActionCreators} from 'redux'
 import { connect } from 'react-redux'
-import Actions from '../store/actions/App'
+import Actions from '../store/actions/Actions'
 import '../assets/style/App.scss'
+
+import Court from './Court'
+import Queue from './Queue'
+import List from './List'
 
 class App extends Component {
     constructor(props) {
@@ -15,6 +19,9 @@ class App extends Component {
               <header className="App-header">
                 UCBC (Underground Church Badminton Club) test
               </header>
+              <Court />
+              <Queue />
+              <List />
             </div>
           )
     }
