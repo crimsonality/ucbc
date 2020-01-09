@@ -13,7 +13,7 @@ class App extends Component {
         return (
             <div className="App">
               <header className="App-header">
-                UCBC (Underground Church Badminton Club)
+                UCBC (Underground Church Badminton Club) test
               </header>
             </div>
           )
