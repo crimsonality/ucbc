@@ -1,9 +1,10 @@
 import ActionTypes from './ActionTypes'
 
-export const AddQueue = (event) => ({
+export const AddQueue = (event, key) => ({
     type: ActionTypes.ADD_QUEUE,
     payload: {
-        event
+        event,
+        key
     }
 })
 

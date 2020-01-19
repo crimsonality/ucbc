@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import {bindActionCreators} from 'redux'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { DragDropContainer} from 'react-drag-drop-container';
+import { DragDropContainer } from 'react-drag-drop-container';
 import * as Actions from '../../store/actions/Actions'
 import '../../assets/style/App.scss'
 
@@ -13,12 +13,12 @@ class OffCourt extends Component {
     render() {
         const players = this.props.OffCourt
         let playerContainer = []
-        
-        if(players && players.length > 0) {
-            for(let player of players) {
+
+        if (players && players.length > 0) {
+            for (let player of players) {
                 playerContainer.push(
                     <DragDropContainer key={player} targetKey='queue' >
-                        <div>{player}</div>
+                        <div className='name-card'>{player}</div>
                     </DragDropContainer>
                 )
             }
@@ -26,10 +26,12 @@ class OffCourt extends Component {
         return (
             <div className='name-container'>
                 <h1>Names</h1>
-                <input type='button' value='Add New Player' onClick={this.props.actions.ShowModal}/>
                 {playerContainer}
+                <div className='input-container'>
+                    <input type='button' value='Add New Player' onClick={this.props.actions.ShowModal} />
+                </div>
             </div>
-          )
+        )
     }
 }
 export default connect(

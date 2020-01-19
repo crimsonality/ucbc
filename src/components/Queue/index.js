@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {bindActionCreators} from 'redux'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { DropTarget } from 'react-drag-drop-container';
 import * as Actions from '../../store/actions/Actions'
@@ -14,30 +14,52 @@ class Queue extends Component {
     }
 
     dropped(e) {
-        this.props.actions.AddQueue(e)
+        console.log(e)
+        this.props.actions.AddQueue(e, 0)
     }
-    
+
     render() {
-        let html = []
+        let queueBuilder = [],
+            html = []
         const Queue = this.props.Queue
 
-        if(Queue && Queue.length > 0) {
-            for(let i in Queue) {
-                html.push(<div key={Queue[i].dragElem.innerText}>{Queue[i].dragElem.innerText}</div>)
+        if (Queue.Game) {
+
+            for (let card in Queue.Game) {
+                let game = Queue.Game[card]
+
+                for (let player in game) {
+                    queueBuilder.push(<div className='name-card' key={game[player]}>{game[player]}</div>)
+                }
+
+                html.push(
+                    <DropTarget
+                        key={card}
+                        targetKey='queue'
+                        onHit={this.dropped}
+                        className={card}
+                    >
+                        {queueBuilder}
+                    </DropTarget>
+                )
             }
+
+            html.push(
+                <DropTarget
+                    key={'new'}
+                    targetKey='queue'
+                    onHit={this.dropped}
+                    className={'new'}
+                > <div>New Queue</div>
+                </DropTarget>
+            )
         }
-        
         return (
             <div className='queue-container'>
-                <DropTarget 
-                    targetKey='queue' 
-                    onHit={this.dropped}
-                >
-                    <h1>Queue</h1>
-                    {html}
-                </DropTarget>
+                <h1>Queue</h1>
+                {html}
             </div>
-          )
+        )
     }
 }
 export default connect(

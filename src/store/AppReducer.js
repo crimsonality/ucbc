@@ -1,7 +1,9 @@
 import ActionTypes from './actions/ActionTypes'
 
 const initialState = {  
-    Queue: [],
+    Queue: {
+      Game: []
+    },
     OffCourt: [],
     Court: [],
     AddPlayerModal: {
@@ -15,9 +17,18 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
 
         case ActionTypes.ADD_QUEUE: {
+          let queueCard = [],
+              name = action.payload.event.dragElem.innerText,
+              key = action.payload.key
+          state.OffCourt = state.OffCourt.filter((x) => x !== name)
+          queueCard.push(name)
           newState = {
             ...state,
-            Queue: [...state.Queue, action.payload.event]
+            Queue: {
+              ...state.Queue,
+              Game: [...state.Queue.Game, queueCard]
+            },
+            OffCourt: [...state.OffCourt]
           }
           break
         }
@@ -56,9 +67,13 @@ const reducer = (state = initialState, action) => {
         }
 
         case ActionTypes.ADD_NEW_PLAYER: {
-          newState = {
-            ...state,
-            OffCourt: [...state.OffCourt, state.AddPlayerModal.Input]
+          if (state.OffCourt.includes(state.AddPlayerModal.Input)) {
+            alert('Player already exists')
+          } else {
+            newState = {
+              ...state,
+              OffCourt: [...state.OffCourt,state.AddPlayerModal.Input]
+            }
           }
           break
         }
