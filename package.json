@@ -5,7 +5,7 @@
   "dependencies": {
     "@babel/preset-react": "^7.7.4",
     "@fortawesome/fontawesome-free": "^5.11.2",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-drag-drop-container": "^6.1.1",
